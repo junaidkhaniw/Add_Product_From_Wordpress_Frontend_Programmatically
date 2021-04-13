@@ -1,11 +1,11 @@
 <?phP
 
-class Image_uploader_class{
+class AddProduct_class{
 
     public function __construct(){
 
         add_shortcode( 'img_uploader', array($this, 'img_uploader_callback') );
-        add_action('wp_enqueue_scripts', array($this, 'load_assets') );
+        add_action( 'wp_enqueue_scripts', array($this, 'load_assets') );
 
     }
 
@@ -16,8 +16,6 @@ class Image_uploader_class{
     }
     
     public function img_uploader_callback() {
-
-        
 
         if (isset($_POST['submit'])) {
         
@@ -35,8 +33,8 @@ class Image_uploader_class{
             $pwidth = $_POST['product_width'];
             $pheight = $_POST['product_height'];
 
-            require plugin_dir_path( __FILE__ ) . 'f.php';
-            $pimg = image_uploader_callback();
+            require plugin_dir_path( __FILE__ ) . 'images_upload_function.php';
+            $pimg = images_uploader_callback();
             
     
             $product=array( 
@@ -66,35 +64,7 @@ class Image_uploader_class{
 
         }
         
-        
-    
-
         ?>
-
-            <!-- <form action="" method="post" enctype="multipart/form-data">
-
-                <input type="text" name="product_name" placeholder="Product Name" /></br>
-                <input type="text" name="product_sku" placeholder="Product SKU" /></br>
-                <input type="text" name="product_price" placeholder="Product Price" /></br>
-
-                <input type="text" name="product_weight" placeholder="Product Weight" /></br>
-                <input type="text" name="product_stock" placeholder="Product Stock" /></br>
-
-                <input type="text" name="product_regular_price" placeholder="Product Regular Price" /></br>
-                <input type="text" name="product_sale_price" placeholder="Product Sale Price" /></br>
-
-                <input type="text" name="product_length" placeholder="Product Length" /></br>
-                <input type="text" name="product_width" placeholder="Product Width" /></br>
-                <input type="text" name="product_height" placeholder="Product Height" /></br>
-
-                <input type="file" name="upload_attachment" class="files" size="50" multiple="multiple" />
-                <input type="file" name="upload_attachment[]" class="files" size="50" multiple="multiple" />
-                <?php //wp_nonce_field( 'upload_attachment', 'my_image_upload_nonce' ); ?>
-                    
-                <input type="submit" name="submit" value="Submit" />
-                
-            </form> -->
-
             <form class="row g-3" action="" method="post" enctype="multipart/form-data">
 
                 <div class="col-md-6">
@@ -143,7 +113,7 @@ class Image_uploader_class{
                 <!-- <div class="col-md-6">
                     <label for="product_feature_image" class="form-label">Product Feature Image</label>
                     <input type="file" name="upload_attachment" class="form-control" id="product_feature_image" size="50">
-                    <?php wp_nonce_field( 'upload_attachment', 'my_image_upload_nonce' ); ?>
+                    <?php //wp_nonce_field( 'upload_attachment', 'my_image_upload_nonce' ); ?>
                 </div> -->
                 <div class="col-md-6">
                     <label for="product_gallary" class="form-label">Product Gallary</label>
@@ -163,11 +133,3 @@ class Image_uploader_class{
     
 
 }
-
-// <div class="col-md-4">
-//     <label for="inputState" class="form-label">State</label>
-//     <select id="inputState" class="form-select">
-//     <option selected>Choose...</option>
-//     <option>...</option>
-//     </select>
-// </div>

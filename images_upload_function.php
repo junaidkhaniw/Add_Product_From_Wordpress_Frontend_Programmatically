@@ -1,6 +1,6 @@
 <?php
 
-function image_uploader_callback() {
+function images_uploader_callback() {
 
     if (!empty($_FILES['upload_attachment']['name'][0])) {
 
