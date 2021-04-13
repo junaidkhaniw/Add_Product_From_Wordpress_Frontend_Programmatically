@@ -1,32 +1,83 @@
-(function( $ ) {
-	'use strict';
+// const form = document.getElementById('form');
+// const name = document.getElementById('name');
+// const sku = document.getElementById('sku');
+// const price = document.getElementById('price');
+// const weight = document.getElementById('weight');
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+// form.addEventListener('submit', e => {
+// 	e.preventDefault();
+	
+// 	checkInputs();
+// });
 
-})( jQuery );
+// function checkInputs() {
+// 	// trim to remove the whitespaces
+// 	const nameValue = name.value.trim();
+// 	const skuValue = sku.value.trim();
+// 	const priceValue = price.value.trim();
+// 	const weightValue = weight.value.trim();
+	
+// 	if(nameValue === '') {
+// 		setErrorFor(name, 'Name cannot be blank');
+// 	} else {
+// 		setSuccessFor(name);
+// 	}
+	
+// 	if(skuValue === '') {
+// 		setErrorFor(sku, 'sku cannot be blank');
+// 	} else if (!issku(skuValue)) {
+// 		setErrorFor(sku, 'Not a valid sku');
+// 	} else {
+// 		setSuccessFor(sku);
+// 	}
+	
+// 	if(priceValue === '') {
+// 		setErrorFor(price, 'Price cannot be blank');
+// 	} else {
+// 		setSuccessFor(price);
+// 	}
+	
+// 	if(weightValue === '') {
+// 		setErrorFor(weight, 'weight cannot be blank');
+// 	} else if(passwordValue !== weightValue) {
+// 		setErrorFor(weight, 'Passwords does not match');
+// 	} else{
+// 		setSuccessFor(weight);
+// 	}
+// }
+
+// function setErrorFor(input, message) {
+// 	const formControl = input.parentElement;
+// 	const small = formControl.querySelector('small');
+// 	formControl.className = 'form-control error';
+// 	small.innerText = message;
+// }
+
+// function setSuccessFor(input) {
+// 	const formControl = input.parentElement;
+// 	formControl.className = 'form-control success';
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+// // SOCIAL PANEL JS
+// const floating_btn = document.querySelector('.floating-btn');
+// const close_btn = document.querySelector('.close-btn');
+// const social_panel_container = document.querySelector('.social-panel-container');
+
+// floating_btn.addEventListener('click', () => {
+// 	social_panel_container.classList.toggle('visible')
+// });
+
+// close_btn.addEventListener('click', () => {
+// 	social_panel_container.classList.remove('visible')
+// });

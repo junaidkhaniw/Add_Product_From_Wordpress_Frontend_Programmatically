@@ -3,6 +3,6 @@
  * included in this file.
 */
 
-/* body {
-    background-color: aqua !important;
-} */
+.error {
+	color: red;
+}
