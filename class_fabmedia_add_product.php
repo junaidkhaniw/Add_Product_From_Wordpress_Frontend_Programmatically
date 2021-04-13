@@ -32,10 +32,6 @@ class AddProduct_class{
             $plength = $_POST['product_length'];
             $pwidth = $_POST['product_width'];
             $pheight = $_POST['product_height'];
-
-            require plugin_dir_path( __FILE__ ) . 'images_upload_function.php';
-            $pimg = images_uploader_callback();
-            
     
             $product=array( 
     
@@ -47,10 +43,14 @@ class AddProduct_class{
             $post_id = wp_insert_post( $product );
             wp_set_object_terms( $post_id, 'simple', 'product_type' );
 
-            add_post_meta( $post_id, '_thumbnail_id', $pimg[0] );
+            require plugin_dir_path( __FILE__ ) . 'images_upload_function.php';
+            $pimg = images_uploader_callback($post_id);
 
-            unset($pimg[0]);
-    
+            require plugin_dir_path( __FILE__ ) . 'feature_image_function.php';
+            $feature_img = Generate_Featured_Image($post_id);
+
+            add_post_meta( $post_id, '_thumbnail_id', $feature_img );
+
             add_post_meta( $post_id, '_price', $pprice );
             add_post_meta( $post_id, '_product_image_gallery', implode(',',$pimg) );
             add_post_meta( $post_id, '_sku', $psku );
@@ -110,11 +110,11 @@ class AddProduct_class{
                     <input type="text" name="product_height" class="form-control" id="product_height">
                 </div>
 
-                <!-- <div class="col-md-6">
+                <div class="col-md-6">
                     <label for="product_feature_image" class="form-label">Product Feature Image</label>
-                    <input type="file" name="upload_attachment" class="form-control" id="product_feature_image" size="50">
-                    <?php //wp_nonce_field( 'upload_attachment', 'my_image_upload_nonce' ); ?>
-                </div> -->
+                    <input type="file" name="upload_file" class="form-control" id="product_feature_image" size="50">
+                    <?php wp_nonce_field( 'upload_file', 'my_feature_image_upload_nonce' ); ?>
+                </div>
                 <div class="col-md-6">
                     <label for="product_gallary" class="form-label">Product Gallary</label>
                     <input type="file" name="upload_attachment[]" class="form-control" id="product_gallary" size="50" multiple="multiple">
@@ -125,7 +125,6 @@ class AddProduct_class{
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
-
         <?php
 
     }

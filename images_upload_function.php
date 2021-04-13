@@ -1,6 +1,6 @@
 <?php
 
-function images_uploader_callback() {
+function images_uploader_callback($post_id) {
 
     if (!empty($_FILES['upload_attachment']['name'][0])) {
 
@@ -8,10 +8,8 @@ function images_uploader_callback() {
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
         require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
-
         $files = $_FILES['upload_attachment'];
         $galleryImages = array();
-
 
         foreach ($files['name'] as $count => $value) {
 
@@ -28,14 +26,13 @@ function images_uploader_callback() {
                 $upload_overrides = array( 'test_form' => false );
                 $upload = wp_handle_upload($file, $upload_overrides);
 
-
                 // $filename should be the path to a file in the upload directory.
                 $filename = $upload['file'];
 
-            //     // The ID of the post this attachment is for.
-                $parent_post_id = get_the_ID();
+                // The ID of the post this attachment is for.
+                $post_id = $post_id;
 
-            //     // Check the type of tile. We'll use this as the 'post_mime_type'.
+                // Check the type of tile. We'll use this as the 'post_mime_type'.
                 $filetype = wp_check_filetype( basename( $filename ), null );
 
                 // Get the path to the upload directory.
@@ -51,7 +48,7 @@ function images_uploader_callback() {
                 );
 
                 // Insert the attachment.
-                $attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
+                $attach_id = wp_insert_attachment( $attachment, $filename, $post_id );
 
                 // Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
                 require_once( ABSPATH . 'wp-admin/includes/image.php' );
